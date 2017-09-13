@@ -28,7 +28,7 @@ Project.prototype.toHtml = function () {
   var $newProject = $('.template').clone();
   $newProject.attr('class', '');
   $newProject.find('a').attr('href', this.projectUrl)
-                       .attr('src', this.projectImg)
+  $newProject.find('img').attr('src', this.projectImg)
   $newProject.find('h1').text(this.title);
   $newProject.find('p').text(this.description);
   $('#projects').prepend($newProject);

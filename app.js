@@ -1,5 +1,7 @@
 'use strict';
 
+var projects = [];
+
 document.getElementById('menu_button').addEventListener('click', reveal);
 var clicked = false;
 
@@ -29,4 +31,11 @@ Project.prototype.toHtml = function () {
                        .attr('src', this.projectImg)
   $newProject.find('h1').text(this.title);
   $newProject.find('p').text(this.description);
+  $('#projects').prepend($newProject);
 }
+
+
+
+projectData.forEach(function(projectObject) {
+  projects.push(new Project(projectObject));
+});

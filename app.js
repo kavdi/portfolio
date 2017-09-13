@@ -19,8 +19,8 @@ function reveal() {
 
 function Project (projectData) {
   this.title = projectData.title;
-  this.projectUrl = projectData.url;
-  this.projectImg = projectData.img;
+  this.projectUrl = projectData.projectUrl;
+  this.projectImg = projectData.projectImg;
   this.description = projectData.description;
 }
 
@@ -34,8 +34,10 @@ Project.prototype.toHtml = function () {
   $('#projects').prepend($newProject);
 }
 
-
-
 projectData.forEach(function(projectObject) {
   projects.push(new Project(projectObject));
 });
+
+for (var i = 0; i < projects.length; i++){
+  projects[i].toHtml();
+}

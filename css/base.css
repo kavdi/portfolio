@@ -1,8 +1,8 @@
 body {
-  background-image: url(/Users/kavdi/Codefellows/CF-301d24/portfolio/img/cityStreets.jpg);
+  background-image: url(/img/cityStreets.jpg);
   background-repeat: no-repeat;
   background-color: gray;
-  color: green;
+  color: red;
 }
 
 .header {
@@ -22,7 +22,7 @@ body {
   float: right;
 }
 
-.menu {
+#menu_icon {
   height: 5vh;
 }
 
@@ -41,20 +41,22 @@ body {
 }
 
 @media all and (min-width: 750px) {
-#nav {
-    display: block;
-    list-style-type: none;
-    width: 30vw;
-    float: left;
-    font-size: 1.3em;
-  }
-
   .navigation {
     float: left;
     margin: 5px;
   }
 
-  .menu {
+  #menu_icon {
+    float:right;
     display: none;
   }
+
+  #nav {
+      display: block;
+      list-style-type: none;
+      width: 30vw;
+      float: left;
+      font-size: 1.3em;
+    }
+
 }

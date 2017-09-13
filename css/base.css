@@ -1,0 +1,60 @@
+body {
+  background-image: url(/Users/kavdi/Codefellows/CF-301d24/portfolio/img/cityStreets.jpg);
+  background-repeat: no-repeat;
+  background-color: gray;
+  color: green;
+}
+
+.header {
+  background-color: rgba(255, 250, 250, 0.5);
+}
+
+#nav {
+  display: none;
+  list-style: none;
+  clear: both;
+
+}
+#links {
+  display: block;
+  margin-right: 10px;
+  width: 30vw;
+  float: right;
+}
+
+.menu {
+  height: 5vh;
+}
+
+.icon {
+  display: inline;
+  float:right;
+  margin: 3px;
+}
+
+.social {
+  height: 5vh;
+}
+
+.main {
+  margin-top: 100px;
+}
+
+@media all and (min-width: 750px) {
+#nav {
+    display: block;
+    list-style-type: none;
+    width: 30vw;
+    float: left;
+    font-size: 1.3em;
+  }
+
+  .navigation {
+    float: left;
+    margin: 5px;
+  }
+
+  .menu {
+    display: none;
+  }
+}

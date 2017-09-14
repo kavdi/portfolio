@@ -17,6 +17,16 @@ function reveal() {
   }
 }
 
+$('li.navigation:eq(0)').on('click', function(){
+  $('.content').show();
+  $('html, body').animate({scrollTop: 0})
+})
+
+$('li.navigation:eq(1)').on('click', function(){
+  $('.content').hide();
+  $('.main').appendTo('body');
+})
+
 function Project (projectData) {
   this.title = projectData.title;
   this.projectUrl = projectData.projectUrl;

@@ -17,6 +17,16 @@ function reveal() {
   }
 }
 
+$('li.navigation:eq(0)').on('click', function(){
+  $('.content').show();
+  $('html, body').animate({scrollTop: 0})
+})
+
+$('li.navigation:eq(1)').on('click', function(){
+  $('.content').hide();
+  $('.main').appendTo('body');
+})
+
 function Project (projectData) {
   this.title = projectData.title;
   this.projectUrl = projectData.projectUrl;
@@ -25,19 +35,17 @@ function Project (projectData) {
 }
 
 Project.prototype.toHtml = function () {
-  var $newProject = $('.template').clone();
-  $newProject.attr('class', '');
-  $newProject.find('a').attr('href', this.projectUrl)
-  $newProject.find('img').attr('src', this.projectImg)
-  $newProject.find('h1').text(this.title);
-  $newProject.find('p').text(this.description);
-  $('#projects').prepend($newProject);
+  var sourceHTML = $('#newTemplate').html();
+  var actualTemplate = Handlebars.compile(sourceHTML);
+  var newRawHTML = actualTemplate(this);
+  // $('#projects').prepend(newRawHTML);
+  return actualTemplate(this);
 }
 
 projectData.forEach(function(projectObject) {
   projects.push(new Project(projectObject));
 });
 
-for (var i = 0; i < projects.length; i++){
-  projects[i].toHtml();
-}
+projects.forEach(function(proj){
+  $('#projects').prepend(proj.toHtml());
+})

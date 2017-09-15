@@ -35,13 +35,12 @@ function Project (projectData) {
 }
 
 Project.prototype.toHtml = function () {
-  var $newProject = $('.template').clone();
-  $newProject.attr('class', '');
-  $newProject.find('a').attr('href', this.projectUrl)
-  $newProject.find('img').attr('src', this.projectImg)
-  $newProject.find('h1').text(this.title);
-  $newProject.find('p').text(this.description);
-  $('#projects').prepend($newProject);
+  var sourceHTML = $('#newTemplate').html();
+  var actualTemplate = Handlebars.compile(sourceHTML);
+  var newRawHTML = actualTemplate(this);
+  $('#projects').prepend(newRawHTML);
+
+  return actualTemplate(this);
 }
 
 projectData.forEach(function(projectObject) {

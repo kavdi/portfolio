@@ -1,3 +1,49 @@
-.template {
+
+.nvg {
+  height: 5vh;
+}
+
+#nav {
   display: none;
+  list-style: none;
+  clear: both;
+  width: 30vw;
+}
+#links {
+  display: block;
+  margin-right: 10px;
+  width: 30vw;
+  float: right;
+}
+
+.describe {
+  display: hidden
+}
+
+.describe:hover {
+  display: block;
+  text-align: center;
+  width: 30vw;
+}
+
+@media all and (min-width: 750px) {
+  .navigation {
+    float: left;
+    margin: 5px;
+  }
+
+  #menu_icon {
+    float:right;
+    display: none;
+    height: 5vh;
+  }
+
+  #nav {
+      display: block;
+      list-style-type: none;
+      width: 30vw;
+      float: left;
+      font-size: 1.3em;
+    }
+
 }

@@ -38,8 +38,7 @@ Project.prototype.toHtml = function () {
   var sourceHTML = $('#newTemplate').html();
   var actualTemplate = Handlebars.compile(sourceHTML);
   var newRawHTML = actualTemplate(this);
-  $('#projects').prepend(newRawHTML);
-
+  // $('#projects').prepend(newRawHTML);
   return actualTemplate(this);
 }
 
@@ -47,6 +46,6 @@ projectData.forEach(function(projectObject) {
   projects.push(new Project(projectObject));
 });
 
-for (var i = 0; i < projects.length; i++){
-  projects[i].toHtml();
-}
+projects.forEach(function(proj){
+  $('#projects').prepend(proj.toHtml());
+})

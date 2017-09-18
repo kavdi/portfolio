@@ -2,7 +2,7 @@
 
 var projects = [];
 
-document.getElementById('menu_button').addEventListener('click', reveal);
+$('#menu_button').on('click', reveal);
 var clicked = false;
 
 function reveal() {
@@ -38,7 +38,6 @@ Project.prototype.toHtml = function () {
   var sourceHTML = $('#newTemplate').html();
   var actualTemplate = Handlebars.compile(sourceHTML);
   var newRawHTML = actualTemplate(this);
-  // $('#projects').prepend(newRawHTML);
   return actualTemplate(this);
 }
 

@@ -1,16 +1,14 @@
-'use strict';
-
-var projectData = [
-  { title: 'Home Fit',
-    projectUrl: 'https://famavott.github.io/Home-Workout-Generator/',
-    projectImg: 'img/kettlebell.png',
-    description: 'This is a look at the final  project for 201 Code Fellows. I collaborated with Matt Favoino, Robert Bronson and Brian Wheeler. The concept was to make an easy to use workout generator that can give you a good short workout for your specific needs.'},
-  { title: 'About Me',
-    projectUrl: 'https://kavdi.github.io/about_me/',
-    projectImg: 'img/person.png',
-    description: 'This is my first ever project in 201 Code Fellows. I made a short and simple about me page that quizes you and gives you some information about me.'},
-  { title: 'Salmon Cookies',
-    projectUrl: 'https://kavdi.github.io/Salmon-Cookie-Shops/',
-    projectImg: 'img/fish.png',
-    description: 'A project to make a form that gives randomized sales numbers and adds them to give daily and hourly totals.'}
+[
+  { "title": "Home Fit",
+    "projectUrl": "https://famavott.github.io/Home-Workout-Generator/",
+    "projectImg": "img/kettlebell.png",
+    "description": "This is a look at the final  project for 201 Code Fellows. I collaborated with Matt Favoino, Robert Bronson and Brian Wheeler. The concept was to make an easy to use workout generator that can give you a good short workout for your specific needs."},
+  { "title": "About Me",
+    "projectUrl": "https://kavdi.github.io/about_me/",
+    "projectImg": "img/person.png",
+    "description": "This is my first ever project in 201 Code Fellows. I made a short and simple about me page that quizes you and gives you some information about me."},
+  { "title": "Salmon Cookies",
+    "projectUrl": "https://kavdi.github.io/Salmon-Cookie-Shops/",
+    "projectImg": "img/fish.png",
+    "description": "A project to make a form that gives randomized sales numbers and adds them to give daily and hourly totals."}
 ]

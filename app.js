@@ -2,7 +2,7 @@
 
 var projects = [];
 
-document.getElementById('menu_button').addEventListener('click', reveal);
+$('#menu_button').on('click', reveal);
 var clicked = false;
 
 function reveal() {

@@ -1,6 +1,6 @@
 'use strict';
 
-var projects = [];
+Project.all = [];
 
 $('#menu_button').on('click', reveal);
 var clicked = false;
@@ -38,14 +38,30 @@ Project.prototype.toHtml = function () {
   var sourceHTML = $('#newTemplate').html();
   var actualTemplate = Handlebars.compile(sourceHTML);
   var newRawHTML = actualTemplate(this);
-  // $('#projects').prepend(newRawHTML);
   return actualTemplate(this);
 }
 
-projectData.forEach(function(projectObject) {
-  projects.push(new Project(projectObject));
-});
+Project.loadAll = function(projectData){
 
-projects.forEach(function(proj){
-  $('#projects').prepend(proj.toHtml());
-})
+  projectData.forEach(function(projectObject) {
+    Project.all.push(new Project(projectObject));
+  });
+
+  Project.all.forEach(function(proj){
+    $('#projects').prepend(proj.toHtml());
+  })
+}
+
+Project.getAll = function(){
+  if (localStorage.projectData){
+    Project.loadAll(JSON.parse(localStorage.projectData))
+  }
+  else {
+    $.get('/projects.json')
+      .then(function(response){
+        localStorage.projectData=JSON.stringify(response);
+        Project.loadAll(response);
+      })
+  }
+}
+Project.getAll();

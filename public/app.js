@@ -5,14 +5,13 @@ Project.all = [];
 $('#menu_button').on('click', reveal);
 var clicked = false;
 
-function reveal() {
-  var nav = document.getElementById('nav');
+function reveal(event) {
   if (!clicked){
-    nav.style.display = 'block';
+    $('#nav').css('display', 'block');
     clicked = true;
   }
   else if (clicked){
-    nav.style.display = 'none';
+    $('#nav').css('display', 'none');
     clicked = false;
   }
 }

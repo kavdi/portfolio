@@ -1,6 +1,6 @@
 'use strict';
 
-let app = app || {};
+var app = app || {};
 
 
 $('#menu_button').on('click', reveal);
@@ -25,10 +25,9 @@ $('li.navigation:eq(0)').on('click', function(){
 $('li.navigation:eq(1)').on('click', function(){
   $('.content').hide();
   $('.main').appendTo('body');
-})
+});
 
-(function proj (module){
-
+(function(module){
   function Project (projectData) {
     this.title = projectData.title;
     this.projectUrl = projectData.projectUrl;
@@ -38,6 +37,14 @@ $('li.navigation:eq(1)').on('click', function(){
 
   Project.all = [];
 
+  Project.Title = () => {
+    return Project.all.map(ele => ele.title)
+                      .reduce((aggregator, title) => {
+                        aggregator.push(title)
+                        return aggregator;
+                      }, []);
+  }
+
   Project.prototype.toHtml = function () {
     var sourceHTML = $('#newTemplate').html();
     var actualTemplate = Handlebars.compile(sourceHTML);
@@ -45,16 +52,13 @@ $('li.navigation:eq(1)').on('click', function(){
     return actualTemplate(this);
   }
 
-  Project.loadAll = function(projectData){
-
-    projectData.forEach(function(projectObject) {
-      Project.all.push(new Project(projectObject));
-    });
-
-    Project.all.forEach(function(proj){
-      $('#projects').prepend(proj.toHtml());
+  Project.loadAll = projectData => {
+    Project.all = projectData.map(ele => new Project(ele));
+    Project.all.map(ele => {
+      $('#projects').prepend(ele.toHtml())
     })
   }
+
 
   Project.getAll = function(){
     if (localStorage.projectData){
@@ -68,6 +72,5 @@ $('li.navigation:eq(1)').on('click', function(){
         })
     }
   }
-  Project.getAll();
   module.Project = Project;
 })(app);

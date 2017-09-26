@@ -1,6 +1,7 @@
 'use strict';
 
-Project.all = [];
+var app = app || {};
+
 
 $('#menu_button').on('click', reveal);
 var clicked = false;
@@ -24,43 +25,52 @@ $('li.navigation:eq(0)').on('click', function(){
 $('li.navigation:eq(1)').on('click', function(){
   $('.content').hide();
   $('.main').appendTo('body');
-})
+});
 
-function Project (projectData) {
-  this.title = projectData.title;
-  this.projectUrl = projectData.projectUrl;
-  this.projectImg = projectData.projectImg;
-  this.description = projectData.description;
-}
-
-Project.prototype.toHtml = function () {
-  var sourceHTML = $('#newTemplate').html();
-  var actualTemplate = Handlebars.compile(sourceHTML);
-  var newRawHTML = actualTemplate(this);
-  return actualTemplate(this);
-}
-
-Project.loadAll = function(projectData){
-
-  projectData.forEach(function(projectObject) {
-    Project.all.push(new Project(projectObject));
-  });
-
-  Project.all.forEach(function(proj){
-    $('#projects').prepend(proj.toHtml());
-  })
-}
-
-Project.getAll = function(){
-  if (localStorage.projectData){
-    Project.loadAll(JSON.parse(localStorage.projectData))
+(function(module){
+  function Project (projectData) {
+    this.title = projectData.title;
+    this.projectUrl = projectData.projectUrl;
+    this.projectImg = projectData.projectImg;
+    this.description = projectData.description;
   }
-  else {
-    $.get('/projects.json')
-      .then(function(response){
-        localStorage.projectData=JSON.stringify(response);
-        Project.loadAll(response);
-      })
+
+  Project.all = [];
+
+  Project.Title = () => {
+    return Project.all.map(ele => ele.title)
+                      .reduce((aggregator, title) => {
+                        aggregator.push(title)
+                        return aggregator;
+                      }, []);
   }
-}
-Project.getAll();
+
+  Project.prototype.toHtml = function () {
+    var sourceHTML = $('#newTemplate').html();
+    var actualTemplate = Handlebars.compile(sourceHTML);
+    var newRawHTML = actualTemplate(this);
+    return actualTemplate(this);
+  }
+
+  Project.loadAll = projectData => {
+    Project.all = projectData.map(ele => new Project(ele));
+    Project.all.map(ele => {
+      $('#projects').prepend(ele.toHtml())
+    })
+  }
+
+
+  Project.getAll = function(){
+    if (localStorage.projectData){
+      Project.loadAll(JSON.parse(localStorage.projectData))
+    }
+    else {
+      $.get('/projects.json')
+        .then(function(response){
+          localStorage.projectData=JSON.stringify(response);
+          Project.loadAll(response);
+        })
+    }
+  }
+  module.Project = Project;
+})(app);

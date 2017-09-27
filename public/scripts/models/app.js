@@ -20,7 +20,7 @@ function reveal(event) {
 $('li.navigation:eq(0)').on('click', function(){
   $('.content').show();
   $('html, body').animate({scrollTop: 0})
-})
+});
 
 $('li.navigation:eq(1)').on('click', function(){
   $('.content').hide();
@@ -40,37 +40,37 @@ $('li.navigation:eq(1)').on('click', function(){
   Project.Title = () => {
     return Project.all.map(ele => ele.title)
                       .reduce((aggregator, title) => {
-                        aggregator.push(title)
+                        aggregator.push(title);
                         return aggregator;
                       }, []);
-  }
+  };
 
   Project.prototype.toHtml = function () {
     var sourceHTML = $('#newTemplate').html();
     var actualTemplate = Handlebars.compile(sourceHTML);
     var newRawHTML = actualTemplate(this);
     return actualTemplate(this);
-  }
+  };
 
   Project.loadAll = projectData => {
     Project.all = projectData.map(ele => new Project(ele));
     Project.all.map(ele => {
       $('#projects').prepend(ele.toHtml())
-    })
-  }
+    });
+  };
 
 
   Project.getAll = function(){
     if (localStorage.projectData){
-      Project.loadAll(JSON.parse(localStorage.projectData))
+      Project.loadAll(JSON.parse(localStorage.projectData));
     }
     else {
       $.get('/projects.json')
         .then(function(response){
           localStorage.projectData=JSON.stringify(response);
           Project.loadAll(response);
-        })
+        });
     }
-  }
+  };
   module.Project = Project;
 })(app);

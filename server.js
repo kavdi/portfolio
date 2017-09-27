@@ -7,6 +7,7 @@ const PRS = require('body-parser').urlencoded({extended: true});
 const app = EX();
 const PORT = process.env.PORT || 3000;
 const requestProxy = require('express-request-proxy');
+const conString = 'postgres://localhost:5432/portfolio';
 
 app.use(EX.static('public'));
 

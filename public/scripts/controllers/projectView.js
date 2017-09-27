@@ -8,4 +8,4 @@ var app = app || {};
   projectView.index = () => {
     app.Project.getAll()
   }
-})
+})(app);

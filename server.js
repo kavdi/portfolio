@@ -11,12 +11,12 @@ const conString = 'postgres://localhost:5432/portfolio';
 
 app.use(EX.static('public'));
 
-app.get('/', function(request, response){
-  response.sendFile('index.html', {root: './public'});
-});
+// app.get('/', function(request, response){
+//   response.sendFile('index.html', {root: './public'});
+// });
 
 app.get('*', function(request, response){
-  response.sendFile('404.html', {root: './public'});
+  response.sendFile('index.html', {root: './public'});
 });
 
 app.listen(PORT, function(){

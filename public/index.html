@@ -15,6 +15,20 @@
         <p class="describe">{{{description}}}</p>
       </project>
     </script>
+    <script id="repo-template" type="text/x-handlebars-template">
+      <li>
+        <a href="{{html_url}}" target="_blank">
+          <h3>{{name}}</h3>
+        </a>
+        <p>Description: {{description}}</p>
+        <p>Language: {{language}}</p>
+        <p>Created: {{created_at}}</p>
+        <p>Last updated: {{updated_at}}</p>
+        {{#if watchers_count}}
+          <p>{{watchers_count}} watching this repo</p>
+        {{/if}}
+      </li>
+    </script>
   </head>
   <body>
     <div class="header">
@@ -42,6 +56,8 @@
       <div class="main">
         <img src="" alt="">
         <p>Story about me. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent rhoncus arcu sit amet neque. Sed urna. Aliquam nonummy, metus id imperdiet sollicitudin, justo ipsum vulputate risus, non rhoncus arcu metus non sapien. Maecenas nonummy ultrices orci. Nunc nec justo a ipsum pharetra accumsan. Etiam ut augue sit amet neque adipiscing posuere. Nunc pharetra erat eu quam.</p>
+        <hr>
+        <ul id="github"></ul>
       </div>
       <div id="projects">
       </div>

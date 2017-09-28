@@ -6,6 +6,6 @@ var app = app || {};
   const aboutView = {};
 
   aboutView.index = () => {
-    $('.main').show().sibling().hide();
+    app.repos.requestRepos
   }
 })(app);

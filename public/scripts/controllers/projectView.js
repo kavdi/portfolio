@@ -4,9 +4,10 @@ var app = app || {};
 
 (function (module){
   const projectView = {};
-  $('section').hide();
-  $('.main').hide();
   projectView.index = () => {
+    $('section').hide();
+    $('.main').hide();
+    $('#projects').show();
     app.Project.getAll()
   }
   module.projectView = projectView;

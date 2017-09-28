@@ -17,15 +17,15 @@ function reveal(event) {
   }
 }
 
-$('li.navigation:eq(0)').on('click', function(){
-  $('.content').show();
-  $('html, body').animate({scrollTop: 0})
-});
-
-$('li.navigation:eq(1)').on('click', function(){
-  $('.content').hide();
-  $('.main').appendTo('body');
-});
+// $('li.navigation:eq(0)').on('click', function(){
+//   $('.content').show();
+//   $('html, body').animate({scrollTop: 0});
+// });
+//
+// $('li.navigation:eq(1)').on('click', function(){
+//   $('.content').hide();
+//   $('.main').appendTo('body');
+// });
 
 (function(module){
   function Project (projectData) {
@@ -55,12 +55,13 @@ $('li.navigation:eq(1)').on('click', function(){
   Project.loadAll = projectData => {
     Project.all = projectData.map(ele => new Project(ele));
     Project.all.map(ele => {
-      $('#projects').prepend(ele.toHtml())
+      $('#projects').prepend(ele.toHtml());
     });
   };
 
 
   Project.getAll = function(){
+    $('#projects').empty();
     if (localStorage.projectData){
       Project.loadAll(JSON.parse(localStorage.projectData));
     }

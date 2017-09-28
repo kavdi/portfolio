@@ -6,6 +6,7 @@ var app = app || {};
   const aboutView = {};
 
   aboutView.index = () => {
-    app.repos.requestRepos
+    app.repos.requestRepos(app.repoView.index);
   }
+  module.aboutView = aboutView;
 })(app);

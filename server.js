@@ -7,7 +7,9 @@ const PRS = require('body-parser').urlencoded({extended: true});
 const app = EX();
 const PORT = process.env.PORT || 3000;
 const requestProxy = require('express-request-proxy');
-const conString = `process.env.DATABASE_URL`;
+const conString = process.env.DATABASE_URL;
+
+app.use(EX.static('./public'));
 
 app.get('/github/*', proxyGitHub);
 function proxyGitHub(req, res) {

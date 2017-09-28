@@ -8,14 +8,6 @@ const app = EX();
 const PORT = process.env.PORT || 3000;
 const requestProxy = require('express-request-proxy');
 const conString = `process.env.DATABASE_URL`;
-const client = new PG.Client(conString);
-
-client.connect();
-client.on('error', err => console.error(err));
-
-app.use(PRS.json());
-app.use(PRS.urlencoded({extended: true}));
-app.use(EX.static('public'));
 
 app.get('/github/*', proxyGitHub);
 function proxyGitHub(req, res) {

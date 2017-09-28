@@ -13,7 +13,7 @@ var app = app || {};
 
   repoView.index = function() {
     ui();
-
+    $('#github').empty();
     $('#github').append(
       app.repos.with('name').map(render)
     );

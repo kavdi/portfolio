@@ -15,6 +15,20 @@
         <p class="describe">{{{description}}}</p>
       </project>
     </script>
+    <script id="repo-template" type="text/x-handlebars-template">
+      <li>
+        <a href="{{html_url}}" target="_blank">
+          <h3>{{name}}</h3>
+        </a>
+        <p>Description: {{description}}</p>
+        <p>Language: {{language}}</p>
+        <p>Created: {{created_at}}</p>
+        <p>Last updated: {{updated_at}}</p>
+        {{#if watchers_count}}
+          <p>{{watchers_count}} watching this repo</p>
+        {{/if}}
+      </li>
+    </script>
   </head>
   <body>
     <div class="header">
@@ -23,8 +37,8 @@
         <nav id="left">
           <span id="menu_button"><img src="img/menu_icon.png" alt="menu" id="menu_icon"></span>
           <ul id="nav">
-            <li class="navigation"><img class="nvg" src="img/home.png" >home</li>
-            <li class="navigation"><img class="nvg" src="img/mglass.png">about</li>
+            <a href="/"><li class="navigation"><img class="nvg" src="img/home.png" >home</li></a>
+            <a href="/about"><li class="navigation"><img class="nvg" src="img/mglass.png">about</li></a>
             <li class="navigation"><img class="nvg" src="img/hobbies.png">hobbies</li>
             <li class="navigation">something</li>
           </ul>
@@ -42,16 +56,27 @@
       <div class="main">
         <img src="" alt="">
         <p>Story about me. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent rhoncus arcu sit amet neque. Sed urna. Aliquam nonummy, metus id imperdiet sollicitudin, justo ipsum vulputate risus, non rhoncus arcu metus non sapien. Maecenas nonummy ultrices orci. Nunc nec justo a ipsum pharetra accumsan. Etiam ut augue sit amet neque adipiscing posuere. Nunc pharetra erat eu quam.</p>
+        <hr>
+        <ul id="github"></ul>
       </div>
       <div id="projects">
       </div>
       <div id="hobies">
         hobies will go here
       </div>
+      <section>
+        <img src="img/wp404error.jpg" alt="404 file not found">
+        <p>This is not the page you are looking for</p>
+      </section>
     </div>
   </body>
+  <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
-  <script src="app.js" charset="utf-8"></script>
-  <script>app.Project.getAll()</script>
+  <script src="/scripts/models/app.js" charset="utf-8"></script>
+  <script src="/scripts/models/repo.js" charset="utf-8"></script>
+  <script src="/scripts/view/repoView.js" charset="utf-8"></script>
+  <script src="/scripts/controllers/projectView.js" charset="utf-8"></script>
+  <script src="/scripts/controllers/aboutView.js" charset="utf-8"></script>
+  <script src="/scripts/controllers/routes.js" charset="utf-8"></script>
 </html>

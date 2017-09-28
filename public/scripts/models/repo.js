@@ -7,6 +7,7 @@ var app = app || {};
   repos.all = [];
 
   repos.requestRepos = function(callback) {
+    repos.all = [];
     $.get('/github/user/repos', function (repo){
       repo.map(ele => {
         repos.all.push(ele);
